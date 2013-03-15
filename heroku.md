@@ -38,6 +38,8 @@ Afterwords:
 
 # Procfile and runtime.txt
 
+	web: cd src/ && gunicorn livres.wsgi:application -b 0.0.0.0:$PORT -w 4
+
 ---
 = data-x="1000"
 
@@ -65,6 +67,7 @@ Afterwords:
 # Add-ons
 
 [Addons link](https://addons.heroku.com/)
+![addons](https://www.evernote.com/shard/s46/sh/5613f48c-173b-4757-b954-ed657a4d5700/e801bc26946f6cf330fc332c2e990f2f/res/e5380e15-d380-42f9-91b9-2ace041c19bc/skitch.png?resizeSmall&width=832)
 
 ---
 = data-x="1000"
