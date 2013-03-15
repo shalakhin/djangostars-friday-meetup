@@ -1,34 +1,20 @@
 # Heroku
 ## Deploy it, Luke!
 
----
-= data-x="1000"
-
-# Step 0. Deploy
-
-
-    git clone https://github.com/rootart/livres-backend
-    heroku create
-    heroku addons:add heroku-postgresql:dev
-    heroku config:add DJANGO_SETTINGS_MODULE="livres.settings"
-    heroku run python src/manage.py syncdb --all
-    git push heroku master
-
-
-Afterwords:
-
-
-    heroku run python manage.py syncdb --all
-
+[Install toolbelt](https://toolbelt.heroku.com/)
 
 ---
 = data-x="1000"
 
 # Workflow
 
+* Develop applications as you did it before (I hope you used git)
+* `heroku create`
+* `git push heroku master`
+* PROFIT!!!
+
 ---
 = data-x="1000"
-
 
 
 # How it works
@@ -46,20 +32,26 @@ Afterwords:
 
 # CLI
 
----
-= data-x="1000"
+`heroku`:
 
-
-# Auth
+    login
+    create
+    config:add
+    addons:add
+    logs --tail
+    ps:scale web=2
+    run
+    apps:rename
+    
 
 ---
 = data-x="1000"
 
 # Buildpacks and PaaS
 
-* GeoDjango (tell about PostGIS and Heroku)
-* Go
-* Python 3
+* [GeoDjango](https://github.com/cirlabs/heroku-buildpack-geodjango)
+* [Go](https://github.com/kr/heroku-buildpack-go)
+* [Python 3](https://github.com/heroku/heroku-buildpack-python/pull/64)
 
 ---
 = data-x="1000"
@@ -100,16 +92,44 @@ Afterwords:
 ---
 = data-x="1000"
 
+# Deploy Django project
+
+    git clone https://github.com/rootart/livres-backend
+    heroku create
+    heroku addons:add heroku-postgresql:dev
+    heroku config:add DJANGO_SETTINGS_MODULE="livres.settings"
+    heroku run python src/manage.py syncdb --all
+    git push heroku master
+
+
+Afterwords:
+
+
+    heroku run python manage.py syncdb --all
+
+in `settings.py`
+
+    import dj_database_url    DATABASES['default'] =  dj_database_url.config()
+
+---
+= data-x="1000"
+
+
 # Deploy Golang project
+
+    echo 'web: simple' > Procfile
+    echo 'simple' > .godir
+    heroku create -b https://github.com/kr/heroku-buildpack-go.git
+    git push heroku master
 
 ---
 = data-x="1000"
 
 # Alternatives
 
-Ep.io
-Gondor
-dotCloud
+* Ep.io
+* Gondor
+* dotCloud
 
 ---
 = data-x="1000"
@@ -120,3 +140,6 @@ dotCloud
 = data-x="1000"
 
 # Literature
+
+* [Build your own addon](https://addons.heroku.com/provider/resources/technical/build/overview)
+* 
