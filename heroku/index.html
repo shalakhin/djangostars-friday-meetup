@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>Heroku</h1>
+
+<h2>Deploy it, Luke!</h2>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Step 0. Deploy</h1>
+<pre><code class='prettyprint '>git clone https://github.com/rootart/livres-backend
+heroku create
+git push heroku master
+</code></pre>
+<p>Afterwords:</p>
+<pre><code class='prettyprint '>heroku run python manage.py syncdb --all
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>Workflow</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>How it works</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Procfile and runtime.txt</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>CLI</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Auth</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Buildpacks and PaaS</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Add-ons</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Free add-ons</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>My Skeleton O_o</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Heroku django-skel</h1>
+
+<p><a href="http://django-skel.readthedocs.org/en/latest/">RTD</a></p>
+<pre><code class='prettyprint '>$ heroku addons:add cloudamqp:lemur
+$ heroku-postgresql:dev
+$ scheduler:standard
+$ memcache:5mb
+$ newrelic:standard
+$ pgbackups:auto-month
+$ sentry:developer
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>Deploy Golang project</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Alternatives</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Costs</h1>
+</div>
+      <div class='step'  data-x="1000">
+    
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
