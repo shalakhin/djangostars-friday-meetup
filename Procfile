@@ -1,1 +1,1 @@
-web: cd heroku && python -m SimpleHTTPServer $PORT
+web: cd heroku && python app.py
