@@ -50,6 +50,7 @@
 <ul>
 <li><a href="http://www.heroku.com/how">How heroku works</a></li>
 <li><a href="https://addons.heroku.com/provider/resources/technical/how/overview">How they work</a></li>
+<li><a href="https://devcenter.heroku.com/articles/usage-and-billing#750-free-dynohours-per-app">Pricing 750 Dyno hours</a></li>
 </ul>
 </div>
       <div class='step'  data-x="1000">
@@ -57,7 +58,8 @@
 <h1>Procfile and runtime.txt</h1>
 
 <p>Procfile example:</p>
-<pre><code class='prettyprint '>web: cd src/ && gunicorn livres.wsgi:application -b 0.0.0.0:$PORT -w 4
+<pre><code class='prettyprint '>web: cd src/ && gunicorn livres.wsgi:application
+     -b 0.0.0.0:$PORT -w 4
 </code></pre></div>
       <div class='step'  data-x="1000">
     
@@ -72,27 +74,54 @@ logs --tail
 ps:scale web=2
 run
 apps:rename
-</code></pre>
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
 <h1>CLI - part 2</h1>
 
 <p><a href="https://devcenter.heroku.com/articles/custom-domains#dns-setup">https://devcenter.heroku.com/articles/custom-domains#dns-setup</a></p>
 <pre><code class='prettyprint '>heroku domains:add livres.djangostars.com
 </code></pre>
 <p>livres.djangostars.com should be a CNAME recored for heroku original domain</p>
+<pre><code class='prettyprint '>kensa create
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>CLI - part 3</h1>
+<pre><code class='prettyprint '>heroku pgbackups:capture
 
-<p>Static and media files handling </p>
-<pre><code class='prettyprint '>django-storages http://django-storages.readthedocs.org/en/latest/
+HEROKU_POSTGRESQL_COBALT_URL (DATABASE_URL)
 
-kensa create
+    ----backup--->  b001
+
+Capturing... done
+Storing... done
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>CLI - part 4</h1>
+<pre><code class='prettyprint '>heroku pgbackups
+ID    Backup Time          Status                          Size    Database
+----  -------------------  ------------------------------  ------      -------------------------------------------
+b001  2013/03/15 14:53.16  Finished @ 2013/03/15 14:53.22  86.8KB  
+
+HEROKU_POSTGRESQL_COBALT_URL (DATABASE_URL)
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>CLI - part 5</h1>
+<pre><code class='prettyprint '>heroku pgbackups:url
+"https://s3.amazonaws.com/hkpgbackups/app12293874@heroku.com/b001.dump'sAWSAccessKeyId=AKIAIYZ2BP3RBVXEIZDA&Expires=1363359880&Signature=B4ttZh7buJeGGSdc4gi7S5KvaK4%3D"
 </code></pre></div>
       <div class='step'  data-x="1000">
     
 <h1>Buildpacks and PaaS</h1>
 
 <ul>
-<li><a href="https://github.com/cirlabs/heroku-buildpack-geodjango">GeoDjango</a></li>
-<li><a href="https://github.com/kr/heroku-buildpack-go">Go</a></li>
-<li><a href="https://github.com/heroku/heroku-buildpack-python/pull/64">Python 3</a></li>
+<li><p><a href="https://devcenter.heroku.com/articles/buildpack-binaries">Buildpack binaries</a></p></li>
+<li><p><a href="https://github.com/cirlabs/heroku-buildpack-geodjango">GeoDjango</a></p></li>
+<li><p><a href="https://github.com/kr/heroku-buildpack-go">Go</a></p></li>
+<li><p><a href="https://github.com/heroku/heroku-buildpack-python/pull/64">Python 3</a></p></li>
 </ul>
 </div>
       <div class='step'  data-x="1000">
@@ -131,12 +160,18 @@ $ sentry:developer
 <pre><code class='prettyprint '>git clone https://github.com/rootart/livres-backend
 heroku create
 heroku addons:add heroku-postgresql:dev
-heroku config:add DJANGO_SETTINGS_MODULE="livres.settings"
+heroku config:add 
+    DJANGO_SETTINGS_MODULE="livres.settings"
 heroku run python src/manage.py syncdb --all
 git push heroku master
 </code></pre>
 <p>Afterwords:</p>
 <pre><code class='prettyprint '>heroku run python manage.py syncdb --all
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>Static and media files handling</h1>
+<pre><code class='prettyprint '>django-storages http://django-storages.readthedocs.org/en/latest/
 </code></pre></div>
       <div class='step'  data-x="1000">
     
@@ -151,7 +186,8 @@ DATABASES['default'] = dj_database_url.config()
 <h1>Deploy Golang project</h1>
 <pre><code class='prettyprint '>echo 'web: simple' > Procfile
 echo 'simple' > .godir
-heroku create -b https://github.com/kr/heroku-buildpack-go.git
+heroku create -b 
+    https://github.com/kr/heroku-buildpack-go.git
 git push heroku master
 </code></pre></div>
       <div class='step'  data-x="1000">
@@ -167,6 +203,8 @@ git push heroku master
       <div class='step'  data-x="1000">
     
 <h1>Costs</h1>
+
+<p><a href="http://www.quora.com/What-are-the-potential-downsides-of-using-Heroku">Quora flood</a></p>
 </div>
       <div class='step'  data-x="1000">
     
@@ -174,7 +212,6 @@ git push heroku master
 
 <ul>
 <li><a href="https://addons.heroku.com/provider/resources/technical/build/overview">Build your own addon</a></li>
-<li></li>
 </ul>
 
       </div>
