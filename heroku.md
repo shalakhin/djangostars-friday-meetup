@@ -9,6 +9,9 @@
 
     git clone https://github.com/rootart/livres-backend
     heroku create
+    heroku addons:add heroku-postgresql:dev
+    heroku config:add DJANGO_SETTINGS_MODULE="livres.settings"
+    heroku run python src/manage.py syncdb --all
     git push heroku master
 
 

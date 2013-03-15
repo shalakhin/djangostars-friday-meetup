@@ -35,6 +35,9 @@
 <h1>Step 0. Deploy</h1>
 <pre><code class='prettyprint '>git clone https://github.com/rootart/livres-backend
 heroku create
+heroku addons:add heroku-postgresql:dev
+heroku config:add DJANGO_SETTINGS_MODULE="livres.settings"
+heroku run python src/manage.py syncdb --all
 git push heroku master
 </code></pre>
 <p>Afterwords:</p>
@@ -63,24 +66,22 @@ git push heroku master
       <div class='step'  data-x="1000">
     
 <h1>Buildpacks and PaaS</h1>
+
+<ul>
+<li>GeoDjango (tell about PostGIS and Heroku)</li>
+<li>Go</li>
+<li>Python 3</li>
+</ul>
 </div>
       <div class='step'  data-x="1000">
     
 <h1>Add-ons</h1>
+
+<p><a href="https://addons.heroku.com/">Addons link</a></p>
 </div>
       <div class='step'  data-x="1000">
     
 <h1>Free add-ons</h1>
-</div>
-      <div class='step'  data-x="1000">
-    
-<h1>My Skeleton O_o</h1>
-</div>
-      <div class='step'  data-x="1000">
-    
-<h1>Heroku django-skel</h1>
-
-<p><a href="http://django-skel.readthedocs.org/en/latest/">RTD</a></p>
 <pre><code class='prettyprint '>$ heroku addons:add cloudamqp:lemur
 $ heroku-postgresql:dev
 $ scheduler:standard
@@ -91,11 +92,27 @@ $ sentry:developer
 </code></pre></div>
       <div class='step'  data-x="1000">
     
+<h1>My Skeleton O_o</h1>
+
+<p><a href="https://github.com/OShalakhin/django-skeleton">My skeleton</a></p>
+</div>
+      <div class='step'  data-x="1000">
+    
+<h1>Heroku django-skel</h1>
+
+<p><a href="http://django-skel.readthedocs.org/en/latest/">RTD</a></p>
+</div>
+      <div class='step'  data-x="1000">
+    
 <h1>Deploy Golang project</h1>
 </div>
       <div class='step'  data-x="1000">
     
 <h1>Alternatives</h1>
+
+<p>Ep.io
+Gondor
+dotCloud</p>
 </div>
       <div class='step'  data-x="1000">
     
@@ -103,6 +120,8 @@ $ sentry:developer
 </div>
       <div class='step'  data-x="1000">
     
+<h1>Literature</h1>
+
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>
