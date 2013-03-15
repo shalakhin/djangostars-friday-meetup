@@ -19,10 +19,15 @@
 
 # How it works
 
+* [How heroku works](http://www.heroku.com/how)
+* [How they work](https://addons.heroku.com/provider/resources/technical/how/overview)
+
 ---
 = data-x="1000"
 
 # Procfile and runtime.txt
+
+Procfile example:
 
 	web: cd src/ && gunicorn livres.wsgi:application -b 0.0.0.0:$PORT -w 4
 
@@ -30,7 +35,7 @@
 = data-x="1000"
 
 
-# CLI
+# CLI - part 1
 
 `heroku`:
 
@@ -42,7 +47,20 @@
     ps:scale web=2
     run
     apps:rename
-    
+
+# CLI - part 2
+
+https://devcenter.heroku.com/articles/custom-domains#dns-setup
+
+    heroku domains:add livres.djangostars.com
+
+livres.djangostars.com should be a CNAME recored for heroku original domain
+
+Static and media files handling 
+
+    django-storages http://django-storages.readthedocs.org/en/latest/
+
+    kensa create
 
 ---
 = data-x="1000"
@@ -107,9 +125,15 @@ Afterwords:
 
     heroku run python manage.py syncdb --all
 
+---
+= data-x="1000"
+
+# Yet another Django-thing
+
 in `settings.py`
 
-    import dj_database_url    DATABASES['default'] =  dj_database_url.config()
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config()
 
 ---
 = data-x="1000"

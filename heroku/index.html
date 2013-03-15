@@ -46,14 +46,22 @@
       <div class='step'  data-x="1000">
     
 <h1>How it works</h1>
+
+<ul>
+<li><a href="http://www.heroku.com/how">How heroku works</a></li>
+<li><a href="https://addons.heroku.com/provider/resources/technical/how/overview">How they work</a></li>
+</ul>
 </div>
       <div class='step'  data-x="1000">
     
 <h1>Procfile and runtime.txt</h1>
-</div>
+
+<p>Procfile example:</p>
+<pre><code class='prettyprint '>web: cd src/ && gunicorn livres.wsgi:application -b 0.0.0.0:$PORT -w 4
+</code></pre></div>
       <div class='step'  data-x="1000">
     
-<h1>CLI</h1>
+<h1>CLI - part 1</h1>
 
 <p><code class='inline prettyprint'>heroku</code>:</p>
 <pre><code class='prettyprint '>login
@@ -64,6 +72,18 @@ logs --tail
 ps:scale web=2
 run
 apps:rename
+</code></pre>
+<h1>CLI - part 2</h1>
+
+<p><a href="https://devcenter.heroku.com/articles/custom-domains#dns-setup">https://devcenter.heroku.com/articles/custom-domains#dns-setup</a></p>
+<pre><code class='prettyprint '>heroku domains:add livres.djangostars.com
+</code></pre>
+<p>livres.djangostars.com should be a CNAME recored for heroku original domain</p>
+
+<p>Static and media files handling </p>
+<pre><code class='prettyprint '>django-storages http://django-storages.readthedocs.org/en/latest/
+
+kensa create
 </code></pre></div>
       <div class='step'  data-x="1000">
     
@@ -79,7 +99,8 @@ apps:rename
     
 <h1>Add-ons</h1>
 
-<p><a href="https://addons.heroku.com/">Addons link</a></p>
+<p><a href="https://addons.heroku.com/">Addons link</a>
+<img src="https://www.evernote.com/shard/s46/sh/5613f48c-173b-4757-b954-ed657a4d5700/e801bc26946f6cf330fc332c2e990f2f/res/e5380e15-d380-42f9-91b9-2ace041c19bc/skitch.png?resizeSmall&amp;width=832" alt="addons"></p>
 </div>
       <div class='step'  data-x="1000">
     
@@ -116,10 +137,14 @@ git push heroku master
 </code></pre>
 <p>Afterwords:</p>
 <pre><code class='prettyprint '>heroku run python manage.py syncdb --all
-</code></pre>
+</code></pre></div>
+      <div class='step'  data-x="1000">
+    
+<h1>Yet another Django-thing</h1>
+
 <p>in <code class='inline prettyprint'>settings.py</code></p>
 <pre><code class='prettyprint '>import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 </code></pre></div>
       <div class='step'  data-x="1000">
     
